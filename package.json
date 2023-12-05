@@ -26,5 +26,8 @@
 		"tailwindcss": "^3.3.5",
 		"vite": "^4.4.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"svelte-flickity": "^1.1.3"
+	}
 }

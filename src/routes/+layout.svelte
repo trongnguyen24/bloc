@@ -7,7 +7,7 @@
 		<slot />
 	</main>
 	<footer
-		class="fixed bottom-0 text-xs w-full flex items-center text-center justify-center p-2 gap-2 bg-primary-700 text-surface-100 sm:text-base sm:p-4 sm:gap-8"
+		class="fixed bottom-0 text-xs w-full flex items-center justify-center p-2 gap-2 bg-primary-700 text-surface-100 sm:text-base sm:p-4 sm:gap-8"
 	>
 		<div class="mr-auto">
 			<a href="/" class="flex justify-center text-base sm:text-3xl items-center">
@@ -17,7 +17,7 @@
 		<div class="flex justify-center">
 			<a
 				href="/"
-				class="items-center inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
+				class="items-center hover:clickfx inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@
 		<div class="flex justify-center">
 			<a
 				href="/"
-				class="items-center inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
+				class="items-center hover:clickfx inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

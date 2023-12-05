@@ -4,4 +4,8 @@
 
 body {
 	background-image: url(/bg.webp);
+	font-family: 'Noto Serif Display', serif;
+}
+
+@layer components {
 }
