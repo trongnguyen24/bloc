@@ -5,6 +5,15 @@
 body {
 	background-image: url(/bg.webp);
 	font-family: 'Noto Serif Display', serif;
+	min-height: 100svh;
+}
+@layer utilities {
+	.full-svh {
+		height: 100svh;
+	}
+	.text-balance {
+		text-wrap: balance;
+	}
 }
 
 @layer components {
