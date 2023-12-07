@@ -2,17 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1536,20,1.333,6,0,&s=0.8|0.5|0.1,1.5|2|3|4|6|8|10,s-s|m-m&g=s,l,xl,12 */
+
+:root {
+	/* Step 0: 18.00px → 20.00px */
+	--step-0: clamp(1.125rem, 1.0921rem + 0.1645vw, 1.25rem);
+
+	/* Step 1: 21.60px → 26.66px */
+	--step-1: clamp(1.35rem, 1.2668rem + 0.4161vw, 1.6663rem);
+
+	/* Step 2: 25.92px → 35.54px */
+	--step-2: clamp(1.62rem, 1.4618rem + 0.7911vw, 2.2213rem);
+
+	/* Step 3: 31.10px → 47.37px */
+	--step-3: clamp(1.9438rem, 1.6762rem + 1.338vw, 2.9606rem);
+
+	/* Step 4: 37.32px → 63.15px */
+	--step-4: clamp(2.3325rem, 1.9077rem + 2.1242vw, 3.9469rem);
+
+	/* Step 5: 44.79px → 84.17px */
+	--step-5: clamp(2.7994rem, 2.1517rem + 3.2385vw, 5.2606rem);
+
+	/* Step 6: 53.75px → 112.20px */
+	--step-6: clamp(3.3594rem, 2.398rem + 4.8067vw, 7.0125rem);
+}
+
 body {
 	background-image: url(/bg.webp);
-	font-family: 'Noto Serif Display', serif;
+	font-family: 'Playfair Display SC', serif;
 	min-height: 100svh;
 }
+@layer base {
+}
+
 @layer utilities {
 	.full-svh {
 		height: 100svh;
 	}
 	.text-balance {
 		text-wrap: balance;
+	}
+	.font-fl-1 {
+		font-size: var(--step-6);
+		line-height: 1.1;
+	}
+	.font-fl-2 {
+		font-size: var(--step-5);
+		line-height: 1.25;
+	}
+	.font-fl-3 {
+		font-size: var(--step-3);
+		line-height: 1.35;
+	}
+	.font-fl-4 {
+		font-size: var(--step-2);
+		line-height: 1.35;
 	}
 }
 

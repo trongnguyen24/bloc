@@ -2,7 +2,7 @@
 	import '../app.css';
 </script>
 
-<div class="app font-serif">
+<div class="app">
 	<main>
 		<slot />
 	</main>
