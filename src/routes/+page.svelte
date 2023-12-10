@@ -1,5 +1,12 @@
 <script>
 	import Carousel from '$lib/Carousel.svelte';
+	let fetchDataResult;
+
+	fetch('https://jsonplaceholder.typicode.com/todos').then((response) => {
+		response.json().then((json) => {
+			fetchDataResult = json;
+		});
+	});
 
 	const options = {
 		contain: true,
@@ -53,13 +60,13 @@
 	</div> -->
 	<div class="w-full">
 		<Carousel {options}>
-			{#each a as a, i}
+			{#each fetchDataResult as item}
 				<div class="px-6 py-10 first:pl-16 last:pr-16">
 					<a
 						href="/"
 						class="bg-surface-50/50 border border-surface-200 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-800 leading-normal aspect-[6/7] p-8"
 					>
-						<h3 class="text-balance font-fl-4 w-full">{a}</h3>
+						<!-- <h3 class="text-balance font-fl-4 w-full">{data.items.name_vn}</h3> -->
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
