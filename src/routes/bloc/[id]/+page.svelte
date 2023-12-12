@@ -16,8 +16,4 @@
 </div>
 
 <style>
-	.prose img {
-		max-width: 400px;
-		width: 100%;
-	}
 </style>

@@ -51,7 +51,7 @@
 
 body {
 	background-image: url(/bg.webp);
-	font-family: 'Noto Serif Display', serif;
+	font-family: 'Judson', serif;
 	min-height: 100svh;
 	overflow-y: scroll;
 }
