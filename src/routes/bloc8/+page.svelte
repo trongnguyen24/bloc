@@ -58,7 +58,7 @@
 			{#each data.projects as item}
 				<div class="px-6 py-10 first:pl-16 last:pr-16">
 					<a
-						href="/bloc/{item.id}"
+						href="/"
 						class="bg-surface-50/50 border border-surface-200 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-800 leading-normal aspect-[6/7] p-8"
 					>
 						<h3 class="text-balance font-fl-4 w-full">{item.name_vn}</h3>
@@ -83,4 +83,26 @@
 </section>
 
 <style>
+	/* ::-webkit-scrollbar {
+		width: 12px;
+		height: 12px;
+		border-radius: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+		border-radius: 12px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #babca980;
+		border-radius: 15px;
+		border: 2px solid transparent;
+		background-clip: padding-box;
+	}
+
+	::-webkit-scrollbar-thumb:hover,
+	::-webkit-scrollbar-thumb:active {
+		background-color: #a9b4bc;
+	} */
 </style>

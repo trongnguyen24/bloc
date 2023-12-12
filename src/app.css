@@ -25,12 +25,35 @@
 
 	/* Step 6: 53.75px → 112.20px */
 	--step-6: clamp(3.3594rem, 2.398rem + 4.8067vw, 7.0125rem);
+	::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+		border-radius: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+		border-radius: 12px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #9f9781;
+		border-radius: 15px;
+		border: 1px solid transparent;
+		background-clip: padding-box;
+	}
+
+	::-webkit-scrollbar-thumb:hover,
+	::-webkit-scrollbar-thumb:active {
+		background-color: #a9b4bc;
+	}
 }
 
 body {
 	background-image: url(/bg.webp);
-	font-family: 'Playfair Display SC', serif;
+	font-family: 'Noto Serif Display', serif;
 	min-height: 100svh;
+	overflow-y: scroll;
 }
 @layer base {
 }

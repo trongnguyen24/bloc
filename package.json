@@ -15,6 +15,7 @@
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.27.4",
+		"@tailwindcss/typography": "^0.5.10",
 		"autoprefixer": "^10.4.16",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^9.0.0",
@@ -28,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"pocketbase": "^0.20.1",
 		"svelte-flickity": "^1.1.3"
 	}
 }

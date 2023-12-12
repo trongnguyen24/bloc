@@ -1,10 +1,14 @@
 <script>
 	import '../app.css';
+	import PageTransition from '$lib/PageTransition.svelte';
+	export let data;
 </script>
 
 <div class="app">
-	<main>
-		<slot />
+	<main class="grid-cols-[1fr]">
+		<PageTransition pathname={data.pathname}>
+			<slot />
+		</PageTransition>
 	</main>
 	<footer
 		class="fixed bottom-0 text-xs w-full flex items-center justify-center p-2 gap-2 bg-primary-700 text-surface-100 sm:text-base sm:p-4 sm:gap-8"
