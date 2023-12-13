@@ -1,6 +1,18 @@
 <script>
 	import '../app.css';
 	import PageTransition from '$lib/PageTransition.svelte';
+	import { cata, lang } from '$lib/stores.js';
+
+	let page_value;
+	cata.subscribe((value) => {
+		page_value = value;
+	});
+	const toggleLang = () => {
+		lang.update((currentLang) => {
+			// Nếu giá trị hiện tại là "vn" thì chuyển sang "en", ngược lại chuyển sang "vn"
+			return currentLang === 'vn' ? 'en' : 'vn';
+		});
+	};
 	export let data;
 </script>
 
@@ -14,13 +26,13 @@
 		class="fixed bottom-0 text-xs w-full flex items-center justify-center p-2 gap-2 bg-primary-700 text-surface-100 sm:text-base sm:p-4 sm:gap-8"
 	>
 		<div class="mr-auto">
-			<a href="/" class="flex justify-center text-base sm:text-3xl items-center">
+			<a href="/{page_value}" class="flex justify-center text-base sm:text-3xl items-center">
 				<p>BẢO TÀNG TỐ HỮU</p>
 			</a>
 		</div>
 		<div class="flex justify-center">
 			<a
-				href="/"
+				href="/{page_value}"
 				class="items-center hover:clickfx inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
 			>
 				<svg
@@ -37,13 +49,21 @@
 						d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
 					/>
 				</svg>
-				<p>MỤC LỤC</p>
+				{#if $lang === 'vn'}
+					<p>MỤC LỤC</p>
+				{/if}
+
+				{#if $lang === 'en'}
+					<p>CATALOGUE</p>
+				{/if}
 			</a>
 		</div>
 		<div class="flex justify-center">
-			<a
-				href="/"
-				class="items-center hover:clickfx inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<div
+				on:click={toggleLang}
+				class="items-center cursor-pointer hover:clickfx inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -60,8 +80,14 @@
 					/>
 				</svg>
 
-				<p>TIẾNG VIỆT</p>
-			</a>
+				{#if $lang === 'vn'}
+					<p>VN</p>
+				{/if}
+
+				{#if $lang === 'en'}
+					<p>EN</p>
+				{/if}
+			</div>
 		</div>
 	</footer>
 </div>

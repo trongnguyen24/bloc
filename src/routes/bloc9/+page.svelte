@@ -1,13 +1,13 @@
 <script>
 	import Carousel from '$lib/Carousel.svelte';
 	import { cata, lang } from '$lib/stores';
+	cata.set('bloc9');
 
-	cata.set('bloc8');
 	/** @type {import('./$types').PageData} */
 	export let data;
 
 	var filteredData = data.projects.filter(function (item) {
-		return item.bloc === 'bloc8';
+		return item.bloc === 'bloc9';
 	});
 
 	const options = {
@@ -43,7 +43,7 @@
 						href="./bloc/{item.id}"
 						class="bg-surface-50/50 border border-surface-200 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-800 leading-normal aspect-[6/7] p-8"
 					>
-						<h3 class="text-balance font-fl-4 uppercase w-full">
+						<h3 class="text-balance uppercase font-fl-4 w-full">
 							{#if $lang === 'vn'}
 								{item.name_vn}
 							{/if}

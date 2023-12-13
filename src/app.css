@@ -10,6 +10,13 @@ body {
 	min-height: 100svh;
 	overflow-y: scroll;
 }
+.flickity-prev-next-button {
+	top: 50%;
+	width: 32px !important;
+	height: 32px !important;
+	border-radius: 50%;
+	transform: translateY(-50%);
+}
 @layer base {
 	:root {
 		/* Step 0: 18.00px → 20.00px */
