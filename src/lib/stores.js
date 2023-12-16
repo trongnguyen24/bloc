@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const cata = writable('');
+export const cat = writable('');
 
 export const lang = writable('vn');

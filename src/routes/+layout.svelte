@@ -1,18 +1,34 @@
 <script>
 	import '../app.css';
+	import { browser } from '$app/environment';
 	import PageTransition from '$lib/PageTransition.svelte';
-	import { cata, lang } from '$lib/stores.js';
+	import { cat, lang } from '$lib/stores.js';
 
 	let page_value;
-	cata.subscribe((value) => {
+	cat.subscribe((value) => {
 		page_value = value;
 	});
+
+	// function toggleLaang() {
+	// 	bookmarkShow = !bookmarkShow;
+	// 	if (bookmarkShow) {
+	// 		localStorage.setItem('bookmarkShow', 'true');
+	// 	} else {
+	// 		localStorage.setItem('bookmarkShow', 'false');
+	// 	}
+	// }
+
 	const toggleLang = () => {
 		lang.update((currentLang) => {
 			// Nếu giá trị hiện tại là "vn" thì chuyển sang "en", ngược lại chuyển sang "vn"
 			return currentLang === 'vn' ? 'en' : 'vn';
 		});
 	};
+	// if (browser) {
+	// 	if (localStorage.bookmarkShow === 'true') {
+	// 		toggleBookmark();
+	// 	}
+	// }
 	export let data;
 </script>
 

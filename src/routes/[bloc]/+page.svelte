@@ -1,13 +1,18 @@
 <script>
+	import { page } from '$app/stores';
 	import Carousel from '$lib/Carousel.svelte';
-	import { cata, lang } from '$lib/stores';
+	import { getImageURL } from '$lib/utils';
+	import { cat, lang } from '$lib/stores';
 
-	cata.set('bloc8');
+	let bloccat = $page.params.bloc;
+	console.log(bloccat);
+
+	cat.set(bloccat);
 	/** @type {import('./$types').PageData} */
 	export let data;
 
 	var filteredData = data.projects.filter(function (item) {
-		return item.bloc === 'bloc8';
+		return item.bloc === bloccat;
 	});
 
 	const options = {
@@ -33,8 +38,8 @@
 			{#each filteredData as item}
 				<div class="px-6 py-10 first:pl-16 last:pr-16">
 					<a
-						href="./bloc/{item.id}"
-						class="bg-surface-50/70 shadow-lg shadow-surface-500/10 overflow-hidden relative border border-surface-200 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-800 leading-normal aspect-[6/7] p-8"
+						href="/{item.bloc}/{item.id}"
+						class="bg-surface-50/70 shadow-lg shadow-surface-500/10 overflow-hidden relative border border-surface-200 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-600 leading-normal aspect-[6/7] p-8"
 					>
 						<h3 class="text-balance font-bold relative z-10 font-fl-4 uppercase w-full">
 							{#if $lang === 'vn'}
@@ -45,11 +50,18 @@
 								{item.name_en}
 							{/if}
 						</h3>
-						<div
-							class="absolute grayscale h-full opacity-20 mix-blend-luminosity bg-cover bg-center w-full top-0 left-0 z-0"
-							style="background-image: url(a.webp)"
-						></div>
-						<!-- <svg
+						{#if item.imagebg != ''}
+							<div
+								class="absolute grayscale h-full opacity-20 mix-blend-luminosity bg-cover bg-center w-full top-0 left-0 z-0"
+								style="background-image: url({getImageURL(
+									item.collectionId,
+									item.id,
+									item.imagebg,
+									'400x0'
+								)})"
+							></div>
+						{/if}
+						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
 							viewBox="0 0 24 24"
@@ -61,7 +73,7 @@
 								stroke-linejoin="round"
 								d="M19.5 19.5l-15-15m0 0v11.25m0-11.25h11.25"
 							/>
-						</svg> -->
+						</svg>
 					</a>
 				</div>
 			{/each}
