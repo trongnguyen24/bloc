@@ -14,8 +14,6 @@
 
 	// Chuyển kết quả từ Set thành mảng
 	var uniqueBlocArray = Array.from(uniqueBlocValues);
-
-	const a = ['bloc8', 'bloc9'];
 </script>
 
 <svelte:head>
