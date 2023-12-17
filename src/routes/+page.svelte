@@ -1,13 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import { cat, lang } from '$lib/stores';
-	cat.set('');
 	/** @type {import('./$types').PageData} */
 	export let data;
-
-	let bloccat = $page.params.bloc;
-
-	cat.set(bloccat);
 
 	// Sử dụng Set để lọc ra các giá trị duy nhất của thuộc tính 'bloc'
 	var uniqueBlocValues = new Set(
