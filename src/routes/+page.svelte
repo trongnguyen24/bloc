@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-
 	import { onMount } from 'svelte';
 	import { cat, lang } from '$lib/stores';
 	/** @type {import('./$types').PageData} */
