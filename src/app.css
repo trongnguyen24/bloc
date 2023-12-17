@@ -19,26 +19,13 @@ body {
 }
 @layer base {
 	:root {
-		/* Step 0: 18.00px → 20.00px */
-		--step-0: clamp(1.125rem, 1.0921rem + 0.1645vw, 1.25rem);
-
-		/* Step 1: 21.60px → 26.66px */
-		--step-1: clamp(1.35rem, 1.2668rem + 0.4161vw, 1.6663rem);
-
-		/* Step 2: 25.92px → 35.54px */
-		--step-2: clamp(1.62rem, 1.4618rem + 0.7911vw, 2.2213rem);
-
-		/* Step 3: 31.10px → 47.37px */
-		--step-3: clamp(1.9438rem, 1.6762rem + 1.338vw, 2.9606rem);
-
-		/* Step 4: 37.32px → 63.15px */
-		--step-4: clamp(2.3325rem, 1.9077rem + 2.1242vw, 3.9469rem);
-
-		/* Step 5: 44.79px → 84.17px */
-		--step-5: clamp(2.7994rem, 2.1517rem + 3.2385vw, 5.2606rem);
-
-		/* Step 6: 53.75px → 112.20px */
-		--step-6: clamp(3.3594rem, 2.398rem + 4.8067vw, 7.0125rem);
+		--step-0: clamp(1rem, 0.9671rem + 0.1645vw, 1.125rem);
+		--step-1: clamp(1.2rem, 1.1212rem + 0.3939vw, 1.4994rem);
+		--step-2: clamp(1.44rem, 1.293rem + 0.7352vw, 1.9988rem);
+		--step-3: clamp(1.7281rem, 1.4817rem + 1.2319vw, 2.6644rem);
+		--step-4: clamp(2.0738rem, 1.6848rem + 1.9449vw, 3.5519rem);
+		--step-5: clamp(2.4881rem, 1.8968rem + 2.9564vw, 4.735rem);
+		--step-6: clamp(2.9863rem, 2.1113rem + 4.375vw, 6.3113rem);
 		::-webkit-scrollbar {
 			width: 5px;
 			height: 5px;

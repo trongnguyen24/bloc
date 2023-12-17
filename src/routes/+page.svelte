@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import { cata, lang } from '$lib/stores';
-	cata.set('');
+	import { cat, lang } from '$lib/stores';
+	cat.set('');
 	/** @type {import('./$types').PageData} */
 	export let data;
 

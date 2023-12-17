@@ -2,12 +2,11 @@
 	import { page } from '$app/stores';
 	/** @type {import('./$types').PageData} */
 	export let data;
-	import { cata, lang } from '$lib/stores';
+	import { lang } from '$lib/stores';
 
 	let idbloc = $page.params.id;
 
 	const bloc = data.projects.find((item) => item.id === idbloc);
-	cata.set(bloc.bloc);
 </script>
 
 <div class="pt-10 pb-16 mx-auto">

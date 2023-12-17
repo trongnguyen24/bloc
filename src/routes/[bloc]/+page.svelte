@@ -3,13 +3,13 @@
 	import Carousel from '$lib/Carousel.svelte';
 	import { getImageURL } from '$lib/utils';
 	import { cat, lang } from '$lib/stores';
-
-	let bloccat = $page.params.bloc;
-	console.log(bloccat);
-
-	cat.set(bloccat);
 	/** @type {import('./$types').PageData} */
 	export let data;
+
+	let bloccat = $page.params.bloc;
+	console.log(data.blocs);
+
+	cat.set(bloccat);
 
 	var filteredData = data.projects.filter(function (item) {
 		return item.bloc === bloccat;

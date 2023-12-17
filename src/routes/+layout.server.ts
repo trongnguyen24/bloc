@@ -6,12 +6,18 @@ export const load: LayoutServerLoad = async ({ url: { pathname }, locals }) => {
 	const getBlogs = async () => {
 		try {
 			const projects = serializeNonPOJOs(await locals.pb.collection('bloc').getFullList());
+			const blocs = serializeNonPOJOs(await locals.pb.collection('blocCat').getFullList());
 
-			return projects;
+			// Include both projects and blocs in the returned object
+			return { projects, blocs };
 		} catch (err) {
 			console.log('Error: ', err);
 			throw error(err.status, err.message);
 		}
 	};
-	return { pathname, projects: getBlogs() };
+
+	// Await the result of getBlogs() to ensure it resolves before returning
+	const blogsData = await getBlogs();
+
+	return { pathname, ...blogsData };
 };
