@@ -5,6 +5,10 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
+	let bloccat = $page.params.bloc;
+
+	cat.set(bloccat);
+
 	// Sử dụng Set để lọc ra các giá trị duy nhất của thuộc tính 'bloc'
 	var uniqueBlocValues = new Set(
 		data.projects.map(function (item) {
