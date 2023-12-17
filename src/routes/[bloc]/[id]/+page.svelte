@@ -2,7 +2,10 @@
 	import { page } from '$app/stores';
 	/** @type {import('./$types').PageData} */
 	export let data;
-	import { lang } from '$lib/stores';
+	import { cat, lang } from '$lib/stores';
+	let bloccat = $page.params.bloc;
+
+	cat.set(bloccat);
 
 	let idbloc = $page.params.id;
 
@@ -18,7 +21,7 @@
 		content="Cuộc đời, sự nghiệp của Tố Hữu thông qua 7 tập thơ gắn liền với những giai đoạn lịch sử cách mạng của đất nước."
 	/>
 	<meta property="og:url" content="" />
-	<meta property="og:image" content="https:bloc.baotangtohuu.org/baotangtohuu.jpg" />
+	<meta property="og:image" content="https://bloc.baotangtohuu.org/baotangtohuu.jpg" />
 </svelte:head>
 <div class="pt-10 pb-16 mx-auto">
 	<h2 class="text-balance font-fl-3 font-bold uppercase text-center text-primary-700">

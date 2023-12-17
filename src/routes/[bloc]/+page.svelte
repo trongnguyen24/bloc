@@ -33,7 +33,7 @@
 		content="Cuộc đời, sự nghiệp của Tố Hữu thông qua 7 tập thơ gắn liền với những giai đoạn lịch sử cách mạng của đất nước."
 	/>
 	<meta property="og:url" content="" />
-	<meta property="og:image" content="https:bloc.baotangtohuu.org/baotangtohuu.jpg" />
+	<meta property="og:image" content="https://bloc.baotangtohuu.org/baotangtohuu.jpg" />
 </svelte:head>
 
 <section class="text-primary-700 flex flex-col min-h-screen justify-evenly items-center pt-8 pb-20">

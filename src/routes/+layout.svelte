@@ -1,5 +1,7 @@
 <script>
 	import '../app.css';
+	import { page } from '$app/stores';
+
 	import { browser } from '$app/environment';
 	import PageTransition from '$lib/PageTransition.svelte';
 	import { cat, lang } from '$lib/stores.js';
