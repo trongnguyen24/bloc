@@ -2,17 +2,25 @@
 	import { page } from '$app/stores';
 	import Carousel from '$lib/Carousel.svelte';
 	import { getImageURL } from '$lib/utils';
-	import { cat, lang } from '$lib/stores';
-	/** @type {import('./$types').PageData} */
-	export let data;
+	import { catStore, blocStore, cat, lang } from '$lib/stores';
+
+	let bloc_value;
+	blocStore.subscribe((value) => {
+		bloc_value = value;
+	});
+
+	let cat_value;
+	catStore.subscribe((value) => {
+		cat_value = value;
+	});
 
 	let bloccat = $page.params.bloc;
 
 	cat.set(bloccat);
 
-	let blocdata = data.blocs.find((item) => item.blocid === bloccat);
+	let blocdata = cat_value.find((item) => item.blocid === bloccat);
 
-	var filteredData = data.projects.filter(function (item) {
+	var filteredData = bloc_value.filter(function (item) {
 		return item.bloc === bloccat;
 	});
 

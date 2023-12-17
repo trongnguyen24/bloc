@@ -1,15 +1,17 @@
 <script>
 	import { page } from '$app/stores';
-	/** @type {import('./$types').PageData} */
-	export let data;
-	import { cat, lang } from '$lib/stores';
+
+	import { blocStore, cat, lang } from '$lib/stores';
 	let bloccat = $page.params.bloc;
 
 	cat.set(bloccat);
-
+	let bloc_value;
+	blocStore.subscribe((value) => {
+		bloc_value = value;
+	});
 	let idbloc = $page.params.id;
 
-	const bloc = data.projects.find((item) => item.id === idbloc);
+	const bloc = bloc_value.find((item) => item.id === idbloc);
 </script>
 
 <svelte:head>

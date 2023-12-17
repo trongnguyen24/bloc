@@ -1,15 +1,23 @@
 <script>
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
-	import { cat, lang } from '$lib/stores';
-	/** @type {import('./$types').PageData} */
-	export let data;
+	import { catStore, blocStore, cat } from '$lib/stores';
+
 	let bloccat = $page.params.bloc;
+
+	let bloc_value;
+	blocStore.subscribe((value) => {
+		bloc_value = value;
+	});
+
+	let cat_value;
+	catStore.subscribe((value) => {
+		cat_value = value;
+	});
 
 	cat.set(bloccat);
 	// Sử dụng Set để lọc ra các giá trị duy nhất của thuộc tính 'bloc'
 	var uniqueBlocValues = new Set(
-		data.projects.map(function (item) {
+		bloc_value.map(function (item) {
 			return item.bloc;
 		})
 	);

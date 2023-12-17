@@ -1,10 +1,15 @@
 <script>
 	import '../app.css';
 	import { page } from '$app/stores';
-
 	import { browser } from '$app/environment';
 	import PageTransition from '$lib/PageTransition.svelte';
-	import { cat, lang } from '$lib/stores.js';
+	import { catStore, blocStore, cat, lang } from '$lib/stores.js';
+	/** @type {import('./$types').PageData} */
+
+	export let data;
+
+	blocStore.set(data.projects);
+	catStore.set(data.blocs);
 
 	let page_value;
 	cat.subscribe((value) => {
@@ -31,7 +36,6 @@
 	// 		toggleBookmark();
 	// 	}
 	// }
-	export let data;
 </script>
 
 <div class="app">
