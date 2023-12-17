@@ -7,7 +7,6 @@
 	export let data;
 
 	let bloccat = $page.params.bloc;
-	console.log(data.blocs);
 
 	cat.set(bloccat);
 
@@ -26,8 +25,15 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Bảo tàng Tố Hữu</title>
+	<meta property="og:title" content="Bảo Tàng Tố Hữu" />
+	<meta property="og:type" content="Bảo Tàng" />
+	<meta
+		name="description"
+		content="Cuộc đời, sự nghiệp của Tố Hữu thông qua 7 tập thơ gắn liền với những giai đoạn lịch sử cách mạng của đất nước."
+	/>
+	<meta property="og:url" content="" />
+	<meta property="og:image" content="https:bloc.baotangtohuu.org/baotangtohuu.jpg" />
 </svelte:head>
 
 <section class="text-primary-700 flex flex-col min-h-screen justify-evenly items-center pt-8 pb-20">

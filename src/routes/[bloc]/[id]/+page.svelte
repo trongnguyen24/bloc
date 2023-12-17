@@ -9,6 +9,17 @@
 	const bloc = data.projects.find((item) => item.id === idbloc);
 </script>
 
+<svelte:head>
+	<title>Bảo tàng Tố Hữu</title>
+	<meta property="og:title" content="Bảo Tàng Tố Hữu" />
+	<meta property="og:type" content="Bảo Tàng" />
+	<meta
+		name="description"
+		content="Cuộc đời, sự nghiệp của Tố Hữu thông qua 7 tập thơ gắn liền với những giai đoạn lịch sử cách mạng của đất nước."
+	/>
+	<meta property="og:url" content="" />
+	<meta property="og:image" content="https:bloc.baotangtohuu.org/baotangtohuu.jpg" />
+</svelte:head>
 <div class="pt-10 pb-16 mx-auto">
 	<h2 class="text-balance font-fl-3 font-bold uppercase text-center text-primary-700">
 		{#if $lang === 'vn'}

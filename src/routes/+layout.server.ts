@@ -12,7 +12,7 @@ export const load: LayoutServerLoad = async ({ url: { pathname }, locals }) => {
 			return { projects, blocs };
 		} catch (err) {
 			console.log('Error: ', err);
-			throw error(err.status, err.message);
+			error(err.status, err.message);
 		}
 	};
 
