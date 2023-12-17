@@ -48,10 +48,11 @@ body {
 		::-webkit-scrollbar-thumb:active {
 			background-color: #a9b4bc;
 		}
+		scroll-behavior: smooth;
 	}
 }
 
-@layer utilities {
+@layer components {
 	.full-svh {
 		height: 100svh;
 	}
@@ -74,7 +75,4 @@ body {
 		font-size: var(--step-2);
 		line-height: 1.35;
 	}
-}
-
-@layer components {
 }

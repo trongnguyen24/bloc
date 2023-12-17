@@ -11,6 +11,8 @@
 
 	cat.set(bloccat);
 
+	let blocdata = data.blocs.find((item) => item.blocid === bloccat);
+
 	var filteredData = data.projects.filter(function (item) {
 		return item.bloc === bloccat;
 	});
@@ -30,8 +32,25 @@
 
 <section class="text-primary-700 flex flex-col min-h-screen justify-evenly items-center pt-8 pb-20">
 	<div>
-		<h1 class="w-full font-bold font-fl-2 text-center py-4">TỐ HỮU</h1>
-		<h2 class="text-balance px-6 font-fl-4 w-full text-center">VỚI VĂN NGHỆ SĨ VÀ TRÍ THỨC</h2>
+		<h1 class="w-full font-bold font-fl-2 text-center py-2">TỐ HỮU</h1>
+		<h2 class="px-6 w-full mx-auto font-fl-4 uppercase text-balance text-center">
+			{#if $lang === 'vn'}
+				{blocdata.blocName_vn}
+			{/if}
+
+			{#if $lang === 'en'}
+				{blocdata.blocName_en}
+			{/if}
+		</h2>
+		<div class="px-4 mx-auto text-balance prose-lg max-w-4xl text-center">
+			{#if $lang === 'vn'}
+				{@html blocdata.body_vn}
+			{/if}
+
+			{#if $lang === 'en'}
+				{@html blocdata.body_en}
+			{/if}
+		</div>
 	</div>
 	<div class="w-full">
 		<Carousel {options}>
@@ -82,26 +101,4 @@
 </section>
 
 <style>
-	/* ::-webkit-scrollbar {
-		width: 12px;
-		height: 12px;
-		border-radius: 12px;
-	}
-
-	::-webkit-scrollbar-track {
-		background: transparent;
-		border-radius: 12px;
-	}
-
-	::-webkit-scrollbar-thumb {
-		background-color: #babca980;
-		border-radius: 15px;
-		border: 2px solid transparent;
-		background-clip: padding-box;
-	}
-
-	::-webkit-scrollbar-thumb:hover,
-	::-webkit-scrollbar-thumb:active {
-		background-color: #a9b4bc;
-	} */
 </style>

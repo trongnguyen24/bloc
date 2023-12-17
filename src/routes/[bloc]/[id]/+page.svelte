@@ -19,7 +19,8 @@
 			{bloc.name_en}
 		{/if}
 	</h2>
-	<div class="prose lg:prose-2xl mt-8 px-6 mx-auto">
+	<div class=" mx-auto text-center text-primary-700 text-lg">~~~</div>
+	<div class="prose lg:prose-xl mt-4 px-6 mx-auto">
 		{#if $lang === 'vn'}
 			{@html bloc.body_vn}
 		{/if}
