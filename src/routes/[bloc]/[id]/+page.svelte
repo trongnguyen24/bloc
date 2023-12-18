@@ -1,17 +1,42 @@
 <script>
 	import { page } from '$app/stores';
+	import { getImageURL } from '$lib/utils';
+	import { blocStore, albumStore, cat, lang } from '$lib/stores';
 
-	import { blocStore, cat, lang } from '$lib/stores';
+
 	let bloccat = $page.params.bloc;
+
+	let album_value;
+
+	albumStore.subscribe((value) => {
+		album_value = value;
+	});
+
+
 
 	cat.set(bloccat);
 	let bloc_value;
+
 	blocStore.subscribe((value) => {
 		bloc_value = value;
 	});
+
 	let idbloc = $page.params.id;
 
+
 	const bloc = bloc_value.find((item) => item.id === idbloc);
+
+	// let albumdata = album_value.items.find((item) => item.album === bloc.album);
+
+	var filteredData = album_value.items.filter(function (item) {
+		return item.album === bloc.album;
+	});
+
+	const startFancy = () => Fancybox.bind('[data-fancybox="gallery"]', {
+        //
+      });    
+
+
 </script>
 
 <svelte:head>
@@ -44,6 +69,23 @@
 		{#if $lang === 'en'}
 			{@html bloc.body_en}
 		{/if}
+	</div>
+	<div class="mx-auto">
+		{#each filteredData as item}
+
+		<a on:click={startFancy} href="{getImageURL(
+			item.collectionId,
+			item.id,
+			item.image,
+		)}" data-fancybox='gallery' data-caption="Single image">
+			<img alt="" src="{getImageURL(
+				item.collectionId,
+				item.id,
+				item.image,
+				'300x0'
+			)}">
+		</a>
+	{/each}
 	</div>
 </div>
 
