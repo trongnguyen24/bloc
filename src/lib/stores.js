@@ -1,11 +1,12 @@
 import { writable } from 'svelte/store';
-import { error } from '@sveltejs/kit';
-import PocketBase from 'pocketbase';
 
-import { serializeNonPOJOs } from '$lib/utils';
+const blocres = await fetch('https://api.baotangtohuu.org/api/collections/bloc/records?perPage=1000');
+const catres = await fetch('https://api.baotangtohuu.org/api/collections/blocCat/records?perPage=1000');
+
+const blocjson = await blocres.json();
+const catjson = await catres.json();
 
 export const cat = writable('');
-
 export const lang = writable('vn');
-export const blocStore = writable('');
-export const catStore = writable('');
+export const blocStore = writable(blocjson);
+export const catStore = writable(catjson);

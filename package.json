@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fancyapps/ui": "^5.0.31",
 		"@sveltejs/adapter-node": "^2.0.0",
 		"pocketbase": "^0.20.1",
 		"svelte-flickity": "^1.1.3"
