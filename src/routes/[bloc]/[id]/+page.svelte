@@ -6,7 +6,7 @@
 	let bloccat = $page.params.bloc;
 
 	let album_value;
-
+	let cap;
 	albumStore.subscribe((value) => {
 		album_value = value;
 	});
@@ -32,6 +32,10 @@
 		Fancybox.bind('[data-fancybox="gallery"]', {
 			//
 		});
+
+		function getDescription(item) {
+        return $lang === 'vn' ? item.description_vn : item.description_en;
+    }
 </script>
 
 <svelte:head>
@@ -65,20 +69,32 @@
 			{@html bloc.body_en}
 		{/if}
 	</div>
-	<div class="mx-auto max-w-5xl grid gap-4 pb-20 grid-cols-[repeat(auto-fill,minmax(160px,_1fr))]">
+	<div class="mx-auto max-w-5xl grid justify-center gap-8 pb-20 grid-cols-[repeat(auto-fill,minmax(340px,_1fr))]">
 		{#each filteredData as item}
+
+			
+
 			<a
-				class="w-40 h-40 block overflow-hidden border-4 bg-surface-50 border-surface-50"
+				class="aspect-square relative overflow-hidden border-4 bg-surface-200/70 shadow-xl border-surface-200/80 p-2 "
 				on:click={startFancy}
 				href={getImageURL(item.collectionId, item.id, item.image)}
 				data-fancybox="gallery"
-				data-caption="Single image"
+				data-caption={getDescription(item)}
 			>
 				<img
 					class="object-contain w-full h-full"
 					alt=""
 					src={getImageURL(item.collectionId, item.id, item.image, '300x0')}
 				/>
+				<span class="absolute text-balance bottom-0 left-0 w-full px-4 h-12 justify-center flex items-center bg-gradient-to-t from-surface-200 to-surface-200/30">
+					{#if $lang === 'vn'}
+						{item.description_vn}
+					{/if}
+			
+					{#if $lang === 'en'}
+						{item.description_en}
+					{/if}
+					</span>
 			</a>
 		{/each}
 	</div>
