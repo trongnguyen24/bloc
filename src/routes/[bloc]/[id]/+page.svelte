@@ -3,7 +3,6 @@
 	import { getImageURL } from '$lib/utils';
 	import { blocStore, albumStore, cat, lang } from '$lib/stores';
 
-
 	let bloccat = $page.params.bloc;
 
 	let album_value;
@@ -11,8 +10,6 @@
 	albumStore.subscribe((value) => {
 		album_value = value;
 	});
-
-
 
 	cat.set(bloccat);
 	let bloc_value;
@@ -23,7 +20,6 @@
 
 	let idbloc = $page.params.id;
 
-
 	const bloc = bloc_value.find((item) => item.id === idbloc);
 
 	// let albumdata = album_value.items.find((item) => item.album === bloc.album);
@@ -32,11 +28,10 @@
 		return item.album === bloc.album;
 	});
 
-	const startFancy = () => Fancybox.bind('[data-fancybox="gallery"]', {
-        //
-      });    
-
-
+	const startFancy = () =>
+		Fancybox.bind('[data-fancybox="gallery"]', {
+			//
+		});
 </script>
 
 <svelte:head>
@@ -70,22 +65,22 @@
 			{@html bloc.body_en}
 		{/if}
 	</div>
-	<div class="mx-auto">
+	<div class="mx-auto max-w-5xl grid gap-4 pb-20 grid-cols-[repeat(auto-fill,minmax(160px,_1fr))]">
 		{#each filteredData as item}
-
-		<a on:click={startFancy} href="{getImageURL(
-			item.collectionId,
-			item.id,
-			item.image,
-		)}" data-fancybox='gallery' data-caption="Single image">
-			<img alt="" src="{getImageURL(
-				item.collectionId,
-				item.id,
-				item.image,
-				'300x0'
-			)}">
-		</a>
-	{/each}
+			<a
+				class="w-40 h-40 block overflow-hidden border-4 bg-surface-50 border-surface-50"
+				on:click={startFancy}
+				href={getImageURL(item.collectionId, item.id, item.image)}
+				data-fancybox="gallery"
+				data-caption="Single image"
+			>
+				<img
+					class="object-contain w-full h-full"
+					alt=""
+					src={getImageURL(item.collectionId, item.id, item.image, '300x0')}
+				/>
+			</a>
+		{/each}
 	</div>
 </div>
 
