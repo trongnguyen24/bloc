@@ -21,21 +21,41 @@
 	// 	if (bookmarkShow) {
 	// 		localStorage.setItem('bookmarkShow', 'true');
 	// 	} else {
-	// 		localStorage.setItem('bookmarkShow', 'false');
+	// 		localStorage.setItem('bookmarkShow', 'false'); 			
+
 	// 	}
 	// }
 
 	const toggleLang = () => {
 		lang.update((currentLang) => {
-			// Nếu giá trị hiện tại là "vn" thì chuyển sang "en", ngược lại chuyển sang "vn"
-			return currentLang === 'vn' ? 'en' : 'vn';
-		});
+			const newLang = currentLang === 'vn' ? 'en' : 'vn';
+
+			localStorage.setItem('lang', newLang);
+
+			return newLang;
+		});		
 	};
-	// if (browser) {
-	// 	if (localStorage.bookmarkShow === 'true') {
-	// 		toggleBookmark();
-	// 	}
-	// }
+
+
+	// Hàm để khởi tạo và kiểm tra giá trị lang trong localStorage
+function initializeLang() {
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+        // Nếu giá trị lang tồn tại trong localStorage, cập nhật biến lang của ứng dụng
+        lang.set(savedLang);
+    } else {
+        // Nếu không tồn tại, bạn có thể đặt một giá trị mặc định hoặc giữ nguyên
+        // Ví dụ: lang.set('en'); // Đặt mặc định là tiếng Anh
+    }
+}
+
+// Gọi hàm khởi tạo khi ứng dụng tải
+
+
+
+	if (browser) {
+		initializeLang();
+	}
 </script>
 
 <div class="app">
