@@ -39,6 +39,6 @@ export async function load({ params, fetch }) {
 	// filter all post with bloc.bloc === params.bloc
 	post = post.items.filter((item) => item.bloc === params.bloc);
 	let postCurrent = post.find((item) => item.id === params.id);
-	console.log(postCurrent);
+
 	return { postsCurrent, postCurrent };
 }

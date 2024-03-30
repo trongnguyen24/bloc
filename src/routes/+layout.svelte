@@ -54,7 +54,7 @@
 		</div>
 		<div class="flex justify-center">
 			<a
-				href="/"
+				href={$page.params.bloc ? '/' + $page.params.bloc : '/'}
 				class="items-center hover:clickfx inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
 			>
 				<svg

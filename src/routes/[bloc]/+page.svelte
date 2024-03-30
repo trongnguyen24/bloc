@@ -27,9 +27,9 @@
 </svelte:head>
 
 <section class="text-primary-700 flex flex-col min-h-screen justify-evenly items-center pt-8 pb-20">
-	<div>
+	<div class="prose prose-xl">
 		<!-- <h1 class="w-full font-bold font-fl-2 text-center py-2">TỐ HỮU</h1> -->
-		<h2 class="px-6 w-full mx-auto font-fl-4 uppercase text-balance text-center">
+		<h2 class="px-6 text-primary-700 w-full mx-auto font-fl-4 uppercase text-balance text-center">
 			{#if $lang === 'vn'}
 				{data.postsCurrent.blocName_vn}
 			{/if}
@@ -54,9 +54,11 @@
 				<div class="px-6 py-10 first:pl-16 last:pr-16">
 					<a
 						href="/{item.bloc}/{item.id}"
-						class="bg-surface-50/70 group hover:bg-surface-50/30 shadow-lg shadow-surface-500/10 hover:shadow-surface-500/30 overflow-hidden relative border border-surface-200 hover:border-surface-300 transition-all duration-300 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-600 leading-normal aspect-[6/7] p-8"
+						class="bg-surface-50/70 group hover:bg-surface-50/30 shadow-lg hover:scale-105 shadow-surface-500/10 hover:shadow-surface-500/30 overflow-hidden relative border border-surface-200 hover:border-surface-300 transition-all duration-700 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-600 leading-normal aspect-[6/7] p-8"
 					>
-						<h3 class="text-balance font-bold relative z-10 font-fl-4 uppercase w-full">
+						<h3
+							class="text-balance font-bold relative z-10 font-fl-4 drop-shadow-xl uppercase w-full"
+						>
 							{#if $lang === 'vn'}
 								{item.name_vn}
 							{/if}
@@ -66,15 +68,11 @@
 							{/if}
 						</h3>
 						{#if item.imagebg != ''}
-							<div
-								class="absolute grayscale h-full opacity-20 mix-blend-luminosity bg-cover bg-center w-full top-0 left-0 z-0"
-								style="background-image: url({getImageURL(
-									item.collectionId,
-									item.id,
-									item.imagebg,
-									'400x0'
-								)})"
-							></div>
+							<img
+								class="absolute grayscale h-full object-fill opacity-20 mix-blend-luminosity inset-0 z-0"
+								alt=""
+								src={getImageURL(item.collectionId, item.id, item.imagebg, '400x0')}
+							/>
 						{/if}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
