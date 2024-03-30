@@ -4,17 +4,74 @@
 	import { getImageURL } from '$lib/utils';
 	import { lang } from '$lib/stores';
 	export let data;
-	const startFancy = () =>
-		Fancybox.bind('[data-fancybox="gallery"]', {
-			//
+	const startFancyvn = () =>
+		Fancybox.bind('[data-fancybox="galleryvn"]', {
+			showClass: false,
+			Carousel: {
+				Navigation: false
+			},
+			Toolbar: {
+				display: {
+					left: ['infobar'],
+					middle: [],
+					right: ['zoomIn', 'zoomOut', 'toggle1to1', 'slideshow', 'close']
+				}
+			}
 		});
 
-	onMount(() => {
+	const startFancyen = () =>
+		Fancybox.bind('[data-fancybox="galleryen"]', {
+			showClass: false,
+			Carousel: {
+				Navigation: false
+			},
+			Toolbar: {
+				display: {
+					left: ['infobar'],
+					middle: [],
+					right: ['zoomIn', 'zoomOut', 'toggle1to1', 'slideshow', 'close']
+				}
+			}
+		});
+
+	function updateParagraphs() {
 		document.querySelectorAll('p').forEach((p) => {
 			if (p.querySelector('img')) {
 				p.classList.add('has-img');
 			}
 		});
+	}
+
+	function updateImages() {
+		let vn = document.querySelector('#vn');
+
+		if (vn) {
+			let images = vn.querySelectorAll('img');
+			images.forEach((img) => {
+				// Thêm thuộc tính data-fancybox để kích hoạt Fancybox cho mỗi hình ảnh
+				img.setAttribute('data-fancybox', 'galleryvn');
+				img.addEventListener('click', startFancyvn);
+			});
+		}
+
+		let en = document.querySelector('#en');
+
+		if (en) {
+			let images = en.querySelectorAll('img');
+			images.forEach((img) => {
+				// Thêm thuộc tính data-fancybox để kích hoạt Fancybox cho mỗi hình ảnh
+				img.setAttribute('data-fancybox', 'galleryen');
+				img.addEventListener('click', startFancyen);
+			});
+		}
+	}
+
+	onMount(() => {
+		updateParagraphs();
+		//delay 500ms and run below function
+		setTimeout(() => {
+			updateImages();
+		}, 500);
 	});
 </script>
 
@@ -40,48 +97,20 @@
 		{/if}
 	</h2>
 	<div class="mx-auto text-center text-primary-700 text-lg">~~~</div>
-	<div class="prose lg:prose-xl mt-4 px-6 mx-auto">
-		{#if $lang === 'vn'}
-			{@html data.postCurrent.body_vn}
-		{/if}
+	<div id="con" class="prose {$lang} lg:prose-xl mt-4 px-6 mx-auto">
+		<div id="vn">{@html data.postCurrent.body_vn}</div>
 
-		{#if $lang === 'en'}
-			{@html data.postCurrent.body_en}
-		{/if}
+		<div id="en">{@html data.postCurrent.body_en}</div>
 	</div>
 	<p class="has-img"></p>
-	<!-- grid-cols-[repeat(auto-fill,minmax(340px,_1fr))] -->
-	<!-- <div class="mx-auto max-w-5xl px-4 grid justify-center gap-4 lg:gap-8 pb-20 grid-cols-2">
-		{#each filteredData as item}
-			<a
-				class="aspect-square relative overflow-hidden border-4 bg-surface-200/70 shadow-xl border-surface-200/80 p-2"
-				on:click={startFancy}
-				href={getImageURL(item.collectionId, item.id, item.image)}
-				data-fancybox="gallery"
-				data-caption={getDescription(item)}
-			>
-				<img
-					class="object-contain w-full h-full"
-					alt=""
-					src={getImageURL(item.collectionId, item.id, item.image, '300x0')}
-				/>
-				<span
-					class="absolute text-balance bottom-0 left-0 w-full px-4 h-12 justify-center flex items-center bg-gradient-to-t from-surface-200 to-surface-200/30"
-				>
-					<p class="line-clamp-2 text-center">
-						{#if $lang === 'vn'}
-							{item.description_vn}
-						{/if}
-
-						{#if $lang === 'en'}
-							{item.description_en}
-						{/if}
-					</p>
-				</span>
-			</a>
-		{/each}
-	</div> -->
 </div>
 
 <style>
+	.vn #en {
+		display: none;
+	}
+
+	.en #vn {
+		display: none;
+	}
 </style>

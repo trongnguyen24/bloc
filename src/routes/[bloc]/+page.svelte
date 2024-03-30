@@ -1,10 +1,81 @@
 <script>
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 	import Carousel from '$lib/Carousel.svelte';
 	import { getImageURL } from '$lib/utils';
 	import { lang } from '$lib/stores';
 
 	export let data;
+
+	const startFancyvn = () =>
+		Fancybox.bind('[data-fancybox="galleryvn"]', {
+			showClass: false,
+			Carousel: {
+				Navigation: false
+			},
+			Toolbar: {
+				display: {
+					left: ['infobar'],
+					middle: [],
+					right: ['zoomIn', 'zoomOut', 'toggle1to1', 'slideshow', 'close']
+				}
+			}
+		});
+
+	const startFancyen = () =>
+		Fancybox.bind('[data-fancybox="galleryen"]', {
+			showClass: false,
+			Carousel: {
+				Navigation: false
+			},
+			Toolbar: {
+				display: {
+					left: ['infobar'],
+					middle: [],
+					right: ['zoomIn', 'zoomOut', 'toggle1to1', 'slideshow', 'close']
+				}
+			}
+		});
+
+	function updateParagraphs() {
+		document.querySelectorAll('p').forEach((p) => {
+			if (p.querySelector('img')) {
+				p.classList.add('has-img');
+			}
+		});
+	}
+
+	function updateImages() {
+		let vn = document.querySelector('#vn');
+
+		if (vn) {
+			let images = vn.querySelectorAll('img');
+			images.forEach((img) => {
+				// Thêm thuộc tính data-fancybox để kích hoạt Fancybox cho mỗi hình ảnh
+				img.setAttribute('data-fancybox', 'galleryvn');
+				img.addEventListener('click', startFancyvn);
+			});
+		}
+
+		let en = document.querySelector('#en');
+
+		if (en) {
+			let images = en.querySelectorAll('img');
+			images.forEach((img) => {
+				// Thêm thuộc tính data-fancybox để kích hoạt Fancybox cho mỗi hình ảnh
+				img.setAttribute('data-fancybox', 'galleryen');
+				img.addEventListener('click', startFancyen);
+			});
+		}
+	}
+
+	onMount(() => {
+		updateParagraphs();
+		//delay 500ms and run below function
+		setTimeout(() => {
+			updateImages();
+		}, 500);
+	});
 
 	const options = {
 		contain: true,
@@ -38,14 +109,10 @@
 				{data.postsCurrent.blocName_en}
 			{/if}
 		</h2>
-		<div class="px-4 mx-auto text-balance prose-lg max-w-4xl text-center">
-			{#if $lang === 'vn'}
-				{@html data.postsCurrent.body_vn}
-			{/if}
+		<div class="px-4 mx-auto text-balance {$lang} prose-lg max-w-4xl text-center">
+			<div id="vn">{@html data.postsCurrent.body_vn}</div>
 
-			{#if $lang === 'en'}
-				{@html data.postsCurrent.body_en}
-			{/if}
+			<div id="en">{@html data.postsCurrent.body_en}</div>
 		</div>
 	</div>
 	<div class="w-full">
@@ -95,4 +162,11 @@
 </section>
 
 <style>
+	.vn #en {
+		display: none;
+	}
+
+	.en #vn {
+		display: none;
+	}
 </style>
