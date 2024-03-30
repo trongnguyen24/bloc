@@ -136,7 +136,7 @@
 						</h3>
 						{#if item.imagebg != ''}
 							<img
-								class="absolute grayscale h-full object-fill opacity-20 mix-blend-luminosity inset-0 z-0"
+								class="absolute grayscale h-full w-full object-fill opacity-20 mix-blend-luminosity inset-0 z-0"
 								alt=""
 								src={getImageURL(item.collectionId, item.id, item.imagebg, '400x0')}
 							/>
