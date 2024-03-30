@@ -6,10 +6,20 @@
 
 body {
 	background-image: url(/bg.webp);
-	font-family: 'Playfair Display', serif;
+	font-family: serif;
 	min-height: 100svh;
 	overflow-y: scroll;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Playfair Display', serif;
+}
+
 .flickity-prev-next-button {
 	top: 50%;
 	width: 32px !important;

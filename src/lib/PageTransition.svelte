@@ -1,6 +1,6 @@
-<script lang="ts">
+<script>
 	import { fly } from 'svelte/transition';
-	export let pathname: string = '';
+	export let pathname = '';
 </script>
 
 {#key pathname}

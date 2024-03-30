@@ -1,29 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { catStore, blocStore, cat } from '$lib/stores';
-
-	let bloccat = $page.params.bloc;
-
-	let bloc_value;
-	blocStore.subscribe((value) => {
-		bloc_value = value;
-	});
-
-	let cat_value;
-	catStore.subscribe((value) => {
-		cat_value = value;
-	});
-
-	cat.set(bloccat);
-	// Sử dụng Set để lọc ra các giá trị duy nhất của thuộc tính 'bloc'
-	var uniqueBlocValues = new Set(
-		bloc_value.map(function (item) {
-			return item.bloc;
-		})
-	);
-
-	// Chuyển kết quả từ Set thành mảng
-	var uniqueBlocArray = Array.from(uniqueBlocValues);
+	export let data;
 </script>
 
 <svelte:head>
@@ -43,13 +20,13 @@
 		<h1 class="w-full font-bold font-fl-2 text-center py-4">TỐ HỮU</h1>
 		<h2 class="text-balance px-6 font-fl-4 w-full text-center">BLOC THƠ</h2>
 	</div>
-	<div class=" w-full px-9 max-w-5xl flex flex-col gap-8 md:gap-12 py-10">
-		{#each uniqueBlocArray as a, i}
+	<div class=" w-full px-9 max-w-5xl grid md:grid-cols-2 gap-8 md:gap-12 py-10">
+		{#each data.posts.items as a}
 			<a
-				href="/{a}"
+				href="/{a.id}"
 				class="bg-surface-50/50 border border-surface-200 flex flex-row justify-between items-center rounded-lg text-surface-800 leading-normal p-6"
 			>
-				<h3 class="text-balance font-fl-4 w-full">{a}</h3>
+				<h3 class="text-balance font-fl-4 w-full">{a.blocid}</h3>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"

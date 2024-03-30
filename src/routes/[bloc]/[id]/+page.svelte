@@ -3,31 +3,6 @@
 	import { getImageURL } from '$lib/utils';
 	import { blocStore, albumStore, cat, lang } from '$lib/stores';
 
-	let bloccat = $page.params.bloc;
-
-	let album_value;
-	let cap;
-	albumStore.subscribe((value) => {
-		album_value = value;
-	});
-
-	cat.set(bloccat);
-	let bloc_value;
-
-	blocStore.subscribe((value) => {
-		bloc_value = value;
-	});
-
-	let idbloc = $page.params.id;
-
-	const bloc = bloc_value.find((item) => item.id === idbloc);
-
-	// let albumdata = album_value.items.find((item) => item.album === bloc.album);
-
-	var filteredData = album_value.items.filter(function (item) {
-		return item.album === bloc.album;
-	});
-
 	const startFancy = () =>
 		Fancybox.bind('[data-fancybox="gallery"]', {
 			//
@@ -52,7 +27,7 @@
 <div class="pt-10 pb-16 mx-auto">
 	<h2 class="text-balance font-fl-3 font-bold uppercase text-center text-primary-700">
 		{#if $lang === 'vn'}
-			{bloc.name_vn}
+			{postCurrent.name_vn}
 		{/if}
 
 		{#if $lang === 'en'}

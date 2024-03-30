@@ -3,28 +3,11 @@
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import PageTransition from '$lib/PageTransition.svelte';
-	import { catStore, blocStore, cat, lang } from '$lib/stores.js';
+	import { lang } from '$lib/stores.js';
+
 	/** @type {import('./$types').PageData} */
 
 	export let data;
-
-	blocStore.set(data.projects);
-	catStore.set(data.blocs);
-
-	let page_value;
-	cat.subscribe((value) => {
-		page_value = value;
-	});
-
-	// function toggleLaang() {
-	// 	bookmarkShow = !bookmarkShow;
-	// 	if (bookmarkShow) {
-	// 		localStorage.setItem('bookmarkShow', 'true');
-	// 	} else {
-	// 		localStorage.setItem('bookmarkShow', 'false'); 			
-
-	// 	}
-	// }
 
 	const toggleLang = () => {
 		lang.update((currentLang) => {
@@ -33,25 +16,22 @@
 			localStorage.setItem('lang', newLang);
 
 			return newLang;
-		});		
+		});
 	};
 
-
 	// Hàm để khởi tạo và kiểm tra giá trị lang trong localStorage
-function initializeLang() {
-    const savedLang = localStorage.getItem('lang');
-    if (savedLang) {
-        // Nếu giá trị lang tồn tại trong localStorage, cập nhật biến lang của ứng dụng
-        lang.set(savedLang);
-    } else {
-        // Nếu không tồn tại, bạn có thể đặt một giá trị mặc định hoặc giữ nguyên
-        // Ví dụ: lang.set('en'); // Đặt mặc định là tiếng Anh
-    }
-}
+	function initializeLang() {
+		const savedLang = localStorage.getItem('lang');
+		if (savedLang) {
+			// Nếu giá trị lang tồn tại trong localStorage, cập nhật biến lang của ứng dụng
+			lang.set(savedLang);
+		} else {
+			// Nếu không tồn tại, bạn có thể đặt một giá trị mặc định hoặc giữ nguyên
+			// Ví dụ: lang.set('en'); // Đặt mặc định là tiếng Anh
+		}
+	}
 
-// Gọi hàm khởi tạo khi ứng dụng tải
-
-
+	// Gọi hàm khởi tạo khi ứng dụng tải
 
 	if (browser) {
 		initializeLang();
@@ -68,13 +48,13 @@ function initializeLang() {
 		class="fixed bottom-0 text-xs w-full flex items-center justify-center p-2 gap-2 bg-primary-700 text-surface-100 sm:text-base sm:p-4 sm:gap-8"
 	>
 		<div class="mr-auto">
-			<a href="/{page_value}" class="flex justify-center text-base sm:text-3xl items-center">
+			<a href="/" class="flex justify-center text-base sm:text-3xl items-center">
 				<p>BẢO TÀNG TỐ HỮU</p>
 			</a>
 		</div>
 		<div class="flex justify-center">
 			<a
-				href="/{page_value}"
+				href="/"
 				class="items-center hover:clickfx inline-flex gap-1 hover:text-surface-200 focus-visible:text-surface-200"
 			>
 				<svg

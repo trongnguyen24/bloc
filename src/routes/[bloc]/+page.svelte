@@ -2,27 +2,9 @@
 	import { page } from '$app/stores';
 	import Carousel from '$lib/Carousel.svelte';
 	import { getImageURL } from '$lib/utils';
-	import { catStore, blocStore, cat, lang } from '$lib/stores';
+	import { lang } from '$lib/stores';
 
-	let bloc_value;
-	blocStore.subscribe((value) => {
-		bloc_value = value;
-	});
-
-	let cat_value;
-	catStore.subscribe((value) => {
-		cat_value = value;
-	});
-
-	let bloccat = $page.params.bloc;
-
-	cat.set(bloccat);
-
-	let blocdata = cat_value.find((item) => item.blocid === bloccat);
-
-	var filteredData = bloc_value.filter(function (item) {
-		return item.bloc === bloccat;
-	});
+	export let data;
 
 	const options = {
 		contain: true,
@@ -46,33 +28,33 @@
 
 <section class="text-primary-700 flex flex-col min-h-screen justify-evenly items-center pt-8 pb-20">
 	<div>
-		<h1 class="w-full font-bold font-fl-2 text-center py-2">TỐ HỮU</h1>
+		<!-- <h1 class="w-full font-bold font-fl-2 text-center py-2">TỐ HỮU</h1> -->
 		<h2 class="px-6 w-full mx-auto font-fl-4 uppercase text-balance text-center">
 			{#if $lang === 'vn'}
-				{blocdata.blocName_vn}
+				{data.postsCurrent.blocName_vn}
 			{/if}
 
 			{#if $lang === 'en'}
-				{blocdata.blocName_en}
+				{data.postsCurrent.blocName_en}
 			{/if}
 		</h2>
 		<div class="px-4 mx-auto text-balance prose-lg max-w-4xl text-center">
 			{#if $lang === 'vn'}
-				{@html blocdata.body_vn}
+				{@html data.postsCurrent.body_vn}
 			{/if}
 
 			{#if $lang === 'en'}
-				{@html blocdata.body_en}
+				{@html data.postsCurrent.body_en}
 			{/if}
 		</div>
 	</div>
 	<div class="w-full">
 		<Carousel {options}>
-			{#each filteredData as item}
+			{#each data.post as item}
 				<div class="px-6 py-10 first:pl-16 last:pr-16">
 					<a
 						href="/{item.bloc}/{item.id}"
-						class="bg-surface-50/70 shadow-lg shadow-surface-500/10 overflow-hidden relative border border-surface-200 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-600 leading-normal aspect-[6/7] p-8"
+						class="bg-surface-50/70 group hover:bg-surface-50/30 shadow-lg shadow-surface-500/10 hover:shadow-surface-500/30 overflow-hidden relative border border-surface-200 hover:border-surface-300 transition-all duration-300 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-600 leading-normal aspect-[6/7] p-8"
 					>
 						<h3 class="text-balance font-bold relative z-10 font-fl-4 uppercase w-full">
 							{#if $lang === 'vn'}
@@ -99,7 +81,7 @@
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke-width="2"
-							class="w-16 h-16 relative z-10 stroke-surface-500/30"
+							class="w-16 h-16 relative z-10 transition-all duration-300 group-hover:stroke-surface-400/90 stroke-surface-500/30"
 						>
 							<path
 								stroke-linecap="round"
