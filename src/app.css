@@ -92,3 +92,7 @@ h6 {
 .has-img img {
 	@apply h-full w-full object-cover m-0 scale-[102%] hover:scale-105 transition-all duration-500;
 }
+
+.center-block {
+	@apply flex justify-center flex-wrap;
+}
