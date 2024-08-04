@@ -115,13 +115,13 @@
 			<div id="en">{@html data.postsCurrent.body_en}</div>
 		</div>
 	</div>
-	<div class="w-full">
-		<Carousel {options}>
+	<div class="max-w-full">
+		<div class="px-6">
 			{#each data.post as item}
-				<div class="px-6 py-10 first:pl-16 last:pr-16">
+				<div class="m-4 float-left">
 					<a
 						href="/{item.bloc}/{item.id}"
-						class="bg-surface-50/70 group hover:bg-surface-50/30 shadow-lg hover:scale-105 shadow-surface-500/10 hover:shadow-surface-500/30 overflow-hidden relative border border-surface-200 hover:border-surface-300 transition-all duration-700 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-600 leading-normal aspect-[6/7] p-8"
+						class="bg-surface-50/70 h-64 group hover:bg-surface-50/30 shadow-lg hover:scale-105 shadow-surface-500/10 hover:shadow-surface-500/30 overflow-hidden relative border border-surface-200 hover:border-surface-300 transition-all duration-700 flex flex-col w-72 lg:w-80 justify-between items-end rounded-lg text-surface-600 leading-normal p-8"
 					>
 						<h3
 							class="text-balance font-bold relative z-10 font-fl-4 drop-shadow-xl uppercase w-full"
@@ -146,7 +146,7 @@
 							fill="none"
 							viewBox="0 0 24 24"
 							stroke-width="2"
-							class="w-16 h-16 relative z-10 transition-all duration-300 group-hover:stroke-surface-400/90 stroke-surface-500/30"
+							class="w-8 h-8 absolute bottom-2 right-2 z-10 transition-all duration-300 group-hover:stroke-surface-400/90 stroke-surface-500/30"
 						>
 							<path
 								stroke-linecap="round"
@@ -157,7 +157,7 @@
 					</a>
 				</div>
 			{/each}
-		</Carousel>
+		</div>
 	</div>
 </section>
 

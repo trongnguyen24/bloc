@@ -87,7 +87,7 @@ h6 {
 	}
 }
 .has-img {
-	@apply max-w-40 aspect-square inline-flex my-0 mx-2 p-0 rounded overflow-hidden border border-surface-300;
+	@apply max-w-3xl aspect-square inline-flex my-0 mx-2 p-0 rounded overflow-hidden border border-surface-300;
 }
 .has-img img {
 	@apply h-full w-full object-cover m-0 scale-[102%] hover:scale-105 transition-all duration-500;
